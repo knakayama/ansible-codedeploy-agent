@@ -1,0 +1,6 @@
+---
+- name: Setup CodeDeploy Agent
+  hosts: localhost
+  connection: local
+  roles:
+    - { role: codedeploy, tags: [ codedeploy ] }

@@ -1,0 +1,17 @@
+---
+- name: Download CodeDeploy Agent
+  get_url:
+    url: "https://aws-codedeploy-{{ code_deploy_region }}.s3.amazonaws.com/latest/install"
+    dest: /tmp/codedeploy-agent
+    mode: 0644
+
+- name: Install CodeDeploy Agent
+  shell: |
+    ruby ./codedeploy-agent auto
+  args:
+    chdir: /tmp
+
+- name: Update CodeDeploy Agent
+  yum:
+    name: codedeploy-agent
+    state: latest
